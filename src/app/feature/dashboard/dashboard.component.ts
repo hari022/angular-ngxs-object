@@ -18,6 +18,7 @@ import {GetAccounts} from '../../shared/models/Account/account.actions';
 export class DashboardComponent implements OnInit {
   profileId = 1;
   show = false;
+  accounts: any;
 
   constructor(private store: Store) {
   }
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
   @Select(ProfileState.profile) profiles$;
 
-  @Select(AccountState.accounts) accounts$;
+  // @Select(AccountState.accounts) accounts$;
 
   ngOnInit() {
     this.geProfile();
@@ -51,7 +52,11 @@ export class DashboardComponent implements OnInit {
 
   getAccounts(p) {
     this.show = true;
-    this.store.dispatch(new GetAccounts(p));
+    this.accounts = p.getAccounts();
+
+    // console.log(this.accounts);
+
+    // this.store.dispatch(new GetAccounts(p));
   }
 
 

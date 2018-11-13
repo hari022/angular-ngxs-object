@@ -61,7 +61,7 @@
                 *ngFor="let p of profiles$ | async">
               <th scope="row">{{p.nick_name}}</th>
               <td>{{p.profile_name}}</td>
-              <td>{{p.owner_id}}</td>
+              <td>{{p.getId()}}</td>
               <td>{{p.status}}</td>
               <td>
                 <button mdbBtn
@@ -77,28 +77,28 @@
           </tbody>
         </table>
 
-        <table mdbTable
-               striped="true"
-               *ngIf="show">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Account Name</th>
-              <th>Funding Source</th>
-              <th>Product ID</th>
+        <!--<table mdbTable-->
+        <!--striped="true"-->
+        <!--*ngIf="show">-->
+        <!--<thead>-->
+        <!--<tr>-->
+        <!--<th>ID</th>-->
+        <!--<th>Account Name</th>-->
+        <!--<th>Funding Source</th>-->
+        <!--<th>Product ID</th>-->
 
-            </tr>
-          </thead>
-          <tbody>
-            <tr mdbTableCol
-                *ngFor="let a of accounts$ | async">
-              <th scope="row">{{a.getId()}}</th>
-              <td>{{a.name}}</td>
-              <td>{{a.funding_source}}</td>
-              <td>{{a.product_id}}</td>
-            </tr>
-          </tbody>
-        </table>
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr mdbTableCol-->
+        <!--*ngFor="let a of accounts$ | async">-->
+        <!--<th scope="row">{{a.getId()}}</th>-->
+        <!--<td>{{a.name}}</td>-->
+        <!--<td>{{a.funding_source}}</td>-->
+        <!--<td>{{a.product_id}}</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+        <!--</table>-->
 
       </div>
     </div>

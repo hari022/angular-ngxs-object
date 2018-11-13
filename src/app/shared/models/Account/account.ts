@@ -1,6 +1,7 @@
 import {Profile} from '../Profile/profile';
 import {Model} from '../model';
 
+
 export class Account extends Model {
   balance: number;
   currency_id: number;
