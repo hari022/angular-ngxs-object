@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 import {Post} from './post';
 import {Profile} from './shared/models/Profile/profile';
 import {Account} from './shared/models/Account/account';
+import {getType} from '@angular/core/src/errors';
 
 
 @Injectable({
@@ -29,23 +30,18 @@ export class ApiService {
     //     return response.map((x) => new Profile(x));
     // }));
 
-    return this.http.get<Post[]>('https://waypay-test.firebaseio.com/profiles.json').pipe(map(response => {
+    return this.http.get<Profile[]>('https://waypay-test.firebaseio.com/profiles.json').pipe(map(response => {
       return response.map((x) => new Profile(x));
 
     }));
   }
 
   getAccounts(parent) {
-    console.log('in service');
-    console.log(parent);
-    // return this.http.get<Profile[]>('https://waypay-test.firebaseio.com/profiles.json').pipe(map(response => {
-    //     console.log(response)
-    //     return response.map((x) => new Profile(x));
-    // }));
-    console.log('Hello');
-    return this.http.get<Account[]>('https://waypay-test.firebaseio.com/accounts.json?profile_id=1').pipe(map(response => {
-      return response.map((x) => new Account(x, parent));
-
+    return this.http.get<Account[]>('https://waypay-test.firebaseio.com/accounts.json?orderBy="profile_id"&startAt=' + parent.getId() + '&endAt=' + parent.getId()).pipe(map(response => {
+      // temp method since firebase is sending us back an object rather than a Json array
+      // we can remove it later
+      let data = Array.from(Object.keys(response), k => response[k]);
+      return data.map((x) => new Account(x, parent));
     }));
   }
 

@@ -17,6 +17,7 @@ import {GetAccounts} from '../../shared/models/Account/account.actions';
 })
 export class DashboardComponent implements OnInit {
   profileId = 1;
+  show = false;
 
   constructor(private store: Store) {
   }
@@ -49,8 +50,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getAccounts(p) {
-    console.log('object');
-    console.log(p);
+    this.show = true;
     this.store.dispatch(new GetAccounts(p));
   }
 

@@ -1,27 +1,18 @@
 import {Profile} from '../Profile/profile';
+import {Model} from '../model';
 
-export class Account {
+export class Account extends Model {
   balance: number;
   currency_id: number;
   funding_source: number;
-  is_prefferd: number;
+  is_preferred: number;
   is_public: number;
   pre_authorize: number;
   product_id: number;
   profile_id: number;
   parent: Profile;
+  name: string;
 
-  // constructor(body: string,
-  //             id: number,
-  //             title: string,
-  //             userId: number) {
-  //
-  //   this.body = body;
-  //   this.id = id;
-  //   this.title = title;
-  //   this.userId = userId;
-  //
-  // }
 
   constructor(values: Object = {}, profile) {
     Object.assign(this, values);
@@ -30,11 +21,4 @@ export class Account {
   }
 
 
-  // getId() {
-  //     return this.owner_id;
-  // }
-  // //
-  // getTitle() {
-  //     return this.title;
-  // }
 }
